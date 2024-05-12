@@ -1,6 +1,7 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import auth from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -40,7 +41,7 @@ const FirebaseProvider = ({ children }) => {
     const logOut = () =>{
         signOut(auth)
         .then(() =>{
-            console.log('Logout Successfull');
+            // console.log('Logout Successfull');
         })
         .catch((err)=>{
             console.log(err);
@@ -50,27 +51,25 @@ const FirebaseProvider = ({ children }) => {
     // On Auth State Changed
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, currentUser => {
-            // const userEmail = currentUser?.email || user?.email;
-            // const loggedUser = { email: userEmail };
+            const userEmail = currentUser?.email || user?.email;
+            const loggedUser = { email: userEmail };
             setUser(currentUser);
-            // console.log('current user', currentUser);
             setLoading(false);
 
-            // if (currentUser) {
-            //     console.log('Logger User: ', loggedUser);
-            //     axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
-            //         .then(res => {
-            //             console.log('token response', res.data);
-            //         })
-            // }
-            // else {
-            //     axios.post('http://localhost:5000/logout', loggedUser, {
-            //         withCredentials: true
-            //     })
-            //         .then(res => {
-            //             console.log(res.data);
-            //         })
-            // }
+            if (currentUser) {
+                axios.post('http://localhost:5000/jwt', loggedUser, { withCredentials: true })
+                    .then(res => {
+                        // console.log(res.data);
+                    })
+            }
+            else {
+                axios.post('http://localhost:5000/logout', loggedUser, {
+                    withCredentials: true
+                })
+                    .then(res => {
+                        // console.log(res.data);
+                    })
+            }
         });
         return () => unsubscribe();
     }, [])
@@ -84,7 +83,7 @@ const FirebaseProvider = ({ children }) => {
         user,
         loading
     }
-    // console.log(allValues);
+
     return (
         <AuthContext.Provider value={allValues}>
             {children}

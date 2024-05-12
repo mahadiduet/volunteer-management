@@ -3,7 +3,7 @@ import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
 
 const VolunteerDetails = () => {
     const volunteer = useLoaderData();
-    console.log('Details Volunteer: ', volunteer);
+    // console.log('Details Volunteer: ', volunteer);
     const { _id, category, deadline, description, location, noOfVolunteersNeeded, postTitle, thumbnail } = volunteer[0];
     return (
         <div className="bg-base-200 p-4 rounded-lg">

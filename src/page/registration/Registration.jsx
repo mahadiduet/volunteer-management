@@ -1,11 +1,15 @@
 import { useContext } from "react";
 import { AuthContext } from "../../FirebaseProvider/FirebaseProvider";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
+import { toast } from "react-toastify";
 
 
 const Registration = () => {
     const { createUser, updateUser } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const existLocation = location?.state || '/';
     const handleSignUp = e => {
         e.preventDefault();
         const from = e.target;
@@ -15,12 +19,12 @@ const Registration = () => {
         const password = from.password.value;
         // console.log(name, email, photo_url, password);
         if (password.length < 6) {
-            // { toast.warning('Please give me minimum 6 character!') }
+            { toast.warning('Please give me minimum 6 character!') }
             console.log('Please give me minimum 6 character!');
             return;
         }
         if (!/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
-            // { toast.warning('You have must be provide password with uppercase or Lowercase!') }
+            { toast.warning('You have must be provide password with uppercase or Lowercase!') }
             console.log('You have must be provide password with uppercase or Lowercase!')
             return;
         }
@@ -30,13 +34,14 @@ const Registration = () => {
                 if (user) {
                     updateUser(name, photo_url)
                         .then((res) => {
-                            console.log('Update User:', res)
+                            // console.log('Update User:', res)
+                            navigate(existLocation);
                         })
                         .catch((err) => {
                             console.log(err);
                         })
                 }
-                console.log(user);
+                // console.log(user);
             })
             .catch((error) => {
                 const errorCode = error.code;

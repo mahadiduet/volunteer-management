@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
+import { toast } from "react-toastify";
 
 const UpdatePost = () => {
     const data = useLoaderData();
-    // console.log(data);
+    const navigate = useNavigate();
     const { _id, category, deadline, description, location, noOfVolunteersNeeded, postTitle, thumbnail, displayName, email } = data[0];
     const [date, setDate] = useState(deadline);
     const [categoryValue, setCategoryValue] = useState(category);
@@ -19,13 +20,15 @@ const UpdatePost = () => {
         const description = from.description.value;
         const category = from.category.value;
         const location = from.location.value;
-        const noOfVolunteersNeeded = from.noOfVolunteersNeeded.value;
+        const noOfVolunteersNeeded = parseInt(from.noOfVolunteersNeeded.value);
         const deadline = from.deadline.value;
         const updateData = {thumbnail, postTitle, description, category, location, noOfVolunteersNeeded, deadline, email, displayName}
         console.log(updateData);
         axios.put(`http://localhost:5000/update-post/${_id}`, updateData)
         .then(res =>{
-            console.log(res.data);
+            // console.log(res.data);
+            toast.success("Your post is updated!!!");
+            navigate('/myvolunteerpost');
         })
         .catch((err)=>{
             console.log(err);

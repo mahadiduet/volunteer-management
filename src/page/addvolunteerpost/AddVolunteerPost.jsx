@@ -3,12 +3,14 @@ import { AuthContext } from "../../FirebaseProvider/FirebaseProvider";
 import ReactDatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from "axios";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
+import { toast } from "react-toastify";
 
 const AddVolunteerPost = () => {
     const { user } = useContext(AuthContext);
     const [date, setDate] = useState(new Date());
+    const navigate = useNavigate();
 
     const email = user?.email ? user.email : '';
     const displayName = user?.displayName ? user.displayName : '';
@@ -28,12 +30,12 @@ const AddVolunteerPost = () => {
         await axios.post('http://localhost:5000/addVolunteersPost', data)
         .then(res =>{
             console.log('Response API: ',res.data)
+            toast.success('You volunteer post added successfully');
+            navigate('/myvolunteerpost');
         })
         .catch((err)=>{
             console.log(err);
         })
-
-        console.log(data);
     }
 
 
