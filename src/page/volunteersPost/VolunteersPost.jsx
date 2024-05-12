@@ -1,11 +1,16 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import VolunteersCard from "../../component/VolunteersCard";
+import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
+import VolunteersCardList from "../../component/VolunteersCardList";
+import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { FaThList } from "react-icons/fa";
 
 const VolunteersPost = () => {
 
     const [data, setData] = useState([]);
-    console.log(data);
+    const [grid, setGrid] = useState(true);
+    // console.log(data);
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -20,14 +25,65 @@ const VolunteersPost = () => {
         // };
     }, []);
 
+    const handleGridView = e =>{
+        e.preventDefault();
+        setGrid(true);
+    }
+
+    const handleListView = e =>{
+        e.preventDefault();
+        setGrid(false);
+    }
+
+    const gridView = <>
+        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 mb-4" id="grid">
+            {
+                data.map(volunteer => <VolunteersCard key={volunteer._id} volunteer={volunteer}></VolunteersCard>)
+            }
+        </div>
+    </>
+    const listView = <>
+        <div>
+            <div className="overflow-x-auto" id="list">
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            <th>
+                                <label>
+                                    <input type="checkbox" className="checkbox" />
+                                </label>
+                            </th>
+                            <th>Thumnail</th>
+                            <th>Post Title</th>
+                            <th>Category</th>
+                            <th>Deadline</th>
+                            <th>View Details</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            data.map(volunteer => <VolunteersCardList key={volunteer._id} volunteer={volunteer}></VolunteersCardList>)
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </>
+
     return (
         <div>
+            <DynamicTitle title="Volunteers Post" />
             <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center mt-8 mb-8">All Volunteers Post</h1>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 mb-4">
-                {
-                    data.map(volunteer => <VolunteersCard key={volunteer._id} volunteer={volunteer}></VolunteersCard>)
-                }
+            <div className="flex gap-4 justify-end">
+                <button id="grid" onClick={handleGridView}><BsFillGrid3X3GapFill /></button>
+                <button id="list" onClick={handleListView}><FaThList /></button>
+
             </div>
+            {grid? gridView : listView}
+            {/* {gridView} */}
+            {/* {listView} */}
+
         </div>
     );
 };

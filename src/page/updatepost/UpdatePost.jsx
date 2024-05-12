@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import ReactDatePicker from "react-datepicker";
 import { useLoaderData } from "react-router-dom";
+import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
 
 const UpdatePost = () => {
     const data = useLoaderData();
@@ -35,6 +36,7 @@ const UpdatePost = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-dew-gradient">
+            <DynamicTitle title="Post Update" />
             <div className="bg-white p-8 rounded-xl shadow-lg w-3/4">
                 <h2 className="text-2xl font-bold text-center mb-8">Update Volunteer Post</h2>
 

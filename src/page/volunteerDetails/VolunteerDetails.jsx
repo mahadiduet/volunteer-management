@@ -1,4 +1,5 @@
 import { Link, useLoaderData } from "react-router-dom";
+import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
 
 const VolunteerDetails = () => {
     const volunteer = useLoaderData();
@@ -6,6 +7,7 @@ const VolunteerDetails = () => {
     const { _id, category, deadline, description, location, noOfVolunteersNeeded, postTitle, thumbnail } = volunteer[0];
     return (
         <div className="bg-base-200 p-4 rounded-lg">
+            <DynamicTitle title={postTitle} />
             <div className="flex-col lg:flex-row">
                 <img className="w-full h-[300px] mx-auto mb-6 rounded-md" src={thumbnail} />
                 <div>

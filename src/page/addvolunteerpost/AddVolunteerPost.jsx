@@ -4,6 +4,7 @@ import ReactDatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css';
 import axios from "axios";
 import { useLoaderData } from "react-router-dom";
+import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
 
 const AddVolunteerPost = () => {
     const { user } = useContext(AuthContext);
@@ -38,6 +39,7 @@ const AddVolunteerPost = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-dew-gradient">
+            <DynamicTitle title="Add Volunteer Post" />
             <div className="bg-white p-8 rounded-xl shadow-lg w-3/4">
                 <h2 className="text-2xl font-bold text-center mb-8">Add Volunteer Post</h2>
 

@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../FirebaseProvider/FirebaseProvider";
 import axios from "axios";
 import MyVolunteerData from "../../component/MyVolunteerData";
+import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
 
 const MyVolunteerPost = () => {
     const [myVolunteerPost, setMyVolunteerPost] = useState([]);
@@ -23,6 +24,7 @@ const MyVolunteerPost = () => {
     },[email]);
     return (
         <div className="bg-cyan-100">
+            <DynamicTitle title="My Volunteer Post" />
             <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center pt-8 mb-8">My Volunteer Post</h1>
                     {/* { loading? 'Loading......':''} */}
                     <table className="table">

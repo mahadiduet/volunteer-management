@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { AuthContext } from "../../FirebaseProvider/FirebaseProvider";
 import { Link } from "react-router-dom";
+import DynamicTitle from "../../component/sharecomponet/DynamicTitle";
 
 
 const Registration = () => {
@@ -47,6 +48,7 @@ const Registration = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-green-red">
+            <DynamicTitle title="SignUp" />
             <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
                 <h2 className="text-2xl font-bold text-center mb-8">Sign Up</h2>
 
