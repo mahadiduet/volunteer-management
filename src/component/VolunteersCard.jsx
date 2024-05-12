@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 
 const VolunteersCard = ({volunteer}) => {
-    console.log(volunteer);
+    // console.log(volunteer);
     const {_id, thumbnail, category, deadline, postTitle} = volunteer;
     return (
         <div className="bg-base-200, min-h-[450px] p-4 rounded-lg shadow-2xl relative">
