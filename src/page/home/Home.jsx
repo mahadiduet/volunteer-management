@@ -1,6 +1,7 @@
 import { Link, useLoaderData } from "react-router-dom";
 import Slider from "./slider/Slider";
 import VolunteersCard from "../../component/VolunteersCard";
+import ExtraSection from "./ExtraSection";
 
 const Home = () => {
     const volunteers = useLoaderData();
@@ -22,6 +23,7 @@ const Home = () => {
             <div className="flex justify-center">
                 <Link to={`/volunteersPost`}><button className="btn bg-blue-700 text-white text-xl">See All</button></Link>
             </div>
+            <ExtraSection />
         </div>
     );
 };
