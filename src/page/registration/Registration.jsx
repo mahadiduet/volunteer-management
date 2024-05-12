@@ -1,36 +1,47 @@
 import { useContext } from "react";
 import { AuthContext } from "../../FirebaseProvider/FirebaseProvider";
+import { Link } from "react-router-dom";
 
 
 const Registration = () => {
-    const {createUser, updateUser} = useContext(AuthContext);
-    const handleSignUp = e =>{
+    const { createUser, updateUser } = useContext(AuthContext);
+    const handleSignUp = e => {
         e.preventDefault();
         const from = e.target;
         const name = from.name.value;
         const email = from.email.value;
         const photo_url = from.photo_url.value;
         const password = from.password.value;
-        console.log(name, email, photo_url, password);
+        // console.log(name, email, photo_url, password);
+        if (password.length < 6) {
+            // { toast.warning('Please give me minimum 6 character!') }
+            console.log('Please give me minimum 6 character!');
+            return;
+        }
+        if (!/(?=.*[a-z])(?=.*[A-Z])/.test(password)) {
+            // { toast.warning('You have must be provide password with uppercase or Lowercase!') }
+            console.log('You have must be provide password with uppercase or Lowercase!')
+            return;
+        }
         createUser(email, password)
-        .then((res) => {
-            const user = res.user;
-            if(user){
-                updateUser(name, photo_url)
-                .then((res) => {
-                    console.log('Update User:',res)
-                })
-                .catch((err) => {
-                    console.log(err);
-                })
-            }
-            console.log(user);
-          })
-          .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-            console.log(errorCode, errorMessage);
-          });
+            .then((res) => {
+                const user = res.user;
+                if (user) {
+                    updateUser(name, photo_url)
+                        .then((res) => {
+                            console.log('Update User:', res)
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        })
+                }
+                console.log(user);
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                console.log(errorCode, errorMessage);
+            });
     }
 
 
@@ -99,6 +110,14 @@ const Registration = () => {
                         Sign Up
                     </button>
                 </form>
+                <div className="mt-4 border-gray-400 border border-dashed border-x-2">
+                    {/* <span className="mt-4 border-red-600 border-x-2"></span> */}
+                </div>
+                <div>
+                    <p className="text-sm font-light text-center text-gray-500 dark:text-gray-400 mt-4">
+                        Already have an account? <Link to='/login' className="font-medium text-primary-600 hover:underline dark:text-primary-500">Login here</Link>
+                    </p>
+                </div>
             </div>
         </div>
     );
