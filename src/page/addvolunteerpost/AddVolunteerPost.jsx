@@ -27,7 +27,7 @@ const AddVolunteerPost = () => {
         const deadline = from.deadline.value;
         const data = {thumbnail, postTitle, description, category, location, noOfVolunteersNeeded, deadline, email, displayName}
         console.log(data);
-        await axios.post('http://localhost:5000/addVolunteersPost', data)
+        await axios.post('https://volunteer-management-server-website.vercel.app/addVolunteersPost', data)
         .then(res =>{
             console.log('Response API: ',res.data)
             toast.success('You volunteer post added successfully');

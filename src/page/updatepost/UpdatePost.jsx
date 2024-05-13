@@ -24,7 +24,7 @@ const UpdatePost = () => {
         const deadline = from.deadline.value;
         const updateData = {thumbnail, postTitle, description, category, location, noOfVolunteersNeeded, deadline, email, displayName}
         console.log(updateData);
-        axios.put(`http://localhost:5000/update-post/${_id}`, updateData)
+        axios.put(`https://volunteer-management-server-website.vercel.app/update-post/${_id}`, updateData)
         .then(res =>{
             // console.log(res.data);
             toast.success("Your post is updated!!!");

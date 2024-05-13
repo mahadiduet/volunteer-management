@@ -23,7 +23,7 @@ const router = createBrowserRouter([
       {
         path: '/',
         element: <Home />,
-        loader: () => fetch('http://localhost:5000/volunteersPostHome')
+        loader: () => fetch('https://volunteer-management-server-website.vercel.app/volunteersPostHome')
       },
       {
         path: '/registration',
@@ -42,7 +42,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <VolunteerDetails />
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/volunteersDetails/${params.id}`)
+        loader: ({ params }) => fetch(`https://volunteer-management-server-website.vercel.app/volunteersDetails/${params.id}`)
       },
       {
         path: '/volunteersPost',
@@ -59,7 +59,7 @@ const router = createBrowserRouter([
         element: <PrivateRoute>
           <UpdatePost />
         </PrivateRoute>,
-        loader: ({ params }) => fetch(`http://localhost:5000/volunteersDetails/${params.id}`)
+        loader: ({ params }) => fetch(`https://volunteer-management-server-website.vercel.app/volunteersDetails/${params.id}`)
       },
       {
         path:'/my-volunteer-request-post',

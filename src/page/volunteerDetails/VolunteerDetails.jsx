@@ -25,12 +25,12 @@ const VolunteerDetails = () => {
             user_name: user_name,
             user_email: user_email
         };
-        await axios.post('http://localhost:5000/be-volunteer', data)
+        await axios.post('https://volunteer-management-server-website.vercel.app/be-volunteer', data)
             .then(res => {
                 console.log('Response API: ', res.data)
                 console.log('Response Insert Id: ', res.data.insertedId);
                 if (res.data.insertedId) {
-                    axios.put(`http://localhost:5000/be-volunteer/${_id}`, {updateNoOfVolunteer})
+                    axios.put(`https://volunteer-management-server-website.vercel.app/be-volunteer/${_id}`, {updateNoOfVolunteer})
                         .then(res => {
                             // console.log('Updaet:',res.data);
                             toast.success("You are added to Vounteer team!");

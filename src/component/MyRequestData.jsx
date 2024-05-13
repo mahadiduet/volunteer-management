@@ -5,7 +5,7 @@ const MyRequestData = ({ post, onDelete }) => {
     const {_id, category, postTitle, deadline } = post;
     const handleRequestPostDelete = e =>{
         e.preventDefault();
-        fetch(`http://localhost:5000/my-request-volunteer-post-cancel/${_id}`,{
+        fetch(`https://volunteer-management-server-website.vercel.app/my-request-volunteer-post-cancel/${_id}`,{
             method: 'DELETE',
         })
         .then(res=>res.json())
