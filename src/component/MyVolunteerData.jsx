@@ -4,6 +4,7 @@ const MyVolunteerData = ({ post, onDelete }) => {
     const { _id, category, location, postTitle } = post;
     const handlePostDelete = (e) =>{
         e.preventDefault();
+        
         fetch(`https://volunteer-management-server-website.vercel.app/myvolunteerpost/${_id}`,{
             method: 'DELETE',
         })

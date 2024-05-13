@@ -30,7 +30,7 @@ const VolunteerDetails = () => {
                 console.log('Response API: ', res.data)
                 console.log('Response Insert Id: ', res.data.insertedId);
                 if (res.data.insertedId) {
-                    axios.put(`https://volunteer-management-server-website.vercel.app/be-volunteer/${_id}`, {updateNoOfVolunteer})
+                    axios.put(`https://volunteer-management-server-website.vercel.app/be-volunteer/${_id}`, { updateNoOfVolunteer })
                         .then(res => {
                             // console.log('Updaet:',res.data);
                             toast.success("You are added to Vounteer team!");
@@ -65,15 +65,16 @@ const VolunteerDetails = () => {
                     <div className="flex gap-10">
                         <p>Need Total Volunteers:{noOfVolunteersNeeded}</p>
                     </div>
-                    {/* <Link to={`/bevolunteer/${_id}`}><button className="btn btn-primary w-full text-xl self-end">Be a Volunteer</button></Link> */}
-                    <button className="btn btn-primary w-full text-xl self-end" onClick={() => document.getElementById('modal').showModal()}>Be a Volunteer</button>
+
+                    <div className="flex justify-center">
+                        <button className="btn btn-primary text-xl" onClick={() => document.getElementById('modal').showModal()}>Be a Volunteer</button>
+                    </div>
                 </div>
             </div>
             {/* Modal Code */}
             <dialog id="modal" className="modal">
                 <div className="modal-box">
                     <form method="dialog">
-                        {/* if there is a button in form, it will close the modal */}
                         <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                     </form>
                     <div className="modal-action">
@@ -99,12 +100,12 @@ const VolunteerDetails = () => {
                             <div className="flex gap-10">
                                 <p className="my-2">Deadline: {deadline}</p>
                             </div>
-                            <div className="flex justify-around">
-                                <button onClick={handleBeVolunteer} className="btn btn-primary text-xl self-end">Request</button>
-                                {/* <form method="dialog" className="modal-backdrop">
-                                    <button className="btn btn-primary text-xl self-end">close</button>
-                                </form> */}
-                            </div>
+                            <form method="dialog">
+                                <div className="flex justify-around">
+                                    <button onClick={handleBeVolunteer} className="btn btn-primary text-xl self-end">Request</button>
+                                </div>
+                            </form>
+
 
                         </div>
                     </div>
