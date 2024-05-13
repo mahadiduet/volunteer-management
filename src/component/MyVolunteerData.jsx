@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const MyVolunteerData = ({ post }) => {
+const MyVolunteerData = ({ post, onDelete }) => {
     const { _id, category, location, postTitle } = post;
     const handlePostDelete = (e) =>{
         e.preventDefault();
@@ -9,7 +9,7 @@ const MyVolunteerData = ({ post }) => {
         })
         .then(res=>res.json())
         .then((data)=>{
-            console.log(data);
+            onDelete(_id);
         })
     }
     return (
@@ -20,7 +20,7 @@ const MyVolunteerData = ({ post }) => {
             <td className="flex gap-5 border border-gray-500">
                 <Link to={`/updatepost/${_id}`}><button className="bg-cyan-300 p-2 rounded-lg">Update</button></Link>
 
-                <button className="bg-cyan-300 p-2 rounded-lg" onClick={handlePostDelete}>Delete</button>
+                <button className="bg-red-600 p-2 rounded-lg" onClick={handlePostDelete}>Delete</button>
             </td>
         </tr>
     );

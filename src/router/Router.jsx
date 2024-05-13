@@ -12,6 +12,7 @@ import MyVolunteerPost from "../page/myvolunteerPost/MyVolunteerPost";
 import UpdatePost from "../page/updatepost/UpdatePost";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import ErrorPage from "../component/sharecomponet/ErrorPage";
+import MyVolunteerRequestPost from "../page/MyVolunteerRequestPost/MyVolunteerRequestPost";
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
           <UpdatePost />
         </PrivateRoute>,
         loader: ({ params }) => fetch(`http://localhost:5000/volunteersDetails/${params.id}`)
+      },
+      {
+        path:'/my-volunteer-request-post',
+        element: <MyVolunteerRequestPost />
       }
     ]
   },

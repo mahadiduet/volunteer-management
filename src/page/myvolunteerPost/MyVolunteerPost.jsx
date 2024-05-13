@@ -35,28 +35,44 @@ const MyVolunteerPost = () => {
         }
         fetachData();
     }, [email]);
+
+    const handleDeletePost = (postId) => {
+        setMyVolunteerPost(prevPosts => prevPosts.filter(post => post._id !== postId));
+    };
+
+    const table = <>
+        <table className="table">
+            <thead>
+                <tr>
+                    <th className="text-center border border-gray-500">Tourism Spot Name</th>
+                    <th className="text-center border border-gray-500">Country Name</th>
+                    <th className="text-center border border-gray-500">Location</th>
+                    <th className="text-center border border-gray-500">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {loading ? 'Loading......' : ''}
+                {
+                    myVolunteerPost.map(post => <MyVolunteerData key={post._id} post={post} onDelete={handleDeletePost}></MyVolunteerData>)
+
+                }
+
+            </tbody>
+        </table>
+    </>
+
+    const noData = <>
+        <div>
+            <img src="https://i.ibb.co/TKw5VXd/No-data.webp" alt="" />
+            <h1 className="text-5xl text-center pb-8 text-cyan-800">My volunteer post is empty!</h1>
+        </div>
+    </>
+
     return (
         <div className="bg-cyan-100">
             <DynamicTitle title="My Volunteer Post" />
             <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center pt-8 mb-8">My Volunteer Post</h1>
-            <table className="table">
-                <thead>
-                    <tr>
-                        <th className="text-center border border-gray-500">Tourism Spot Name</th>
-                        <th className="text-center border border-gray-500">Country Name</th>
-                        <th className="text-center border border-gray-500">Location</th>
-                        <th className="text-center border border-gray-500">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {loading ? 'Loading......' : ''}
-                    {
-                        myVolunteerPost.map(post => <MyVolunteerData key={post._id} post={post}></MyVolunteerData>)
-
-                    }
-
-                </tbody>
-            </table>
+            {myVolunteerPost.length>0?table:noData}
 
         </div>
     );
