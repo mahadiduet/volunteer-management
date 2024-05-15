@@ -72,7 +72,7 @@ const VolunteerDetails = () => {
                     </div>
                 </div>
             </div>
-            {/* Modal Code */}
+            {/* start Modal Code */}
             <dialog id="modal" className="modal">
                 <div className="modal-box">
                     <form method="dialog">
