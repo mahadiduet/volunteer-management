@@ -17,7 +17,6 @@ const Registration = () => {
         const email = from.email.value;
         const photo_url = from.photo_url.value;
         const password = from.password.value;
-        // console.log(name, email, photo_url, password);
         if (password.length < 6) {
             { toast.warning('Please give me minimum 6 character!') }
             console.log('Please give me minimum 6 character!');
