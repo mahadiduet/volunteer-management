@@ -37,10 +37,10 @@ const MyVolunteerRequestPost = () => {
         <table className="table">
             <thead>
                 <tr>
-                    <th className="text-center border border-gray-500">Post Title</th>
-                    <th className="text-center border border-gray-500">Category</th>
-                    <th className="text-center border border-gray-500">Deadline</th>
-                    <th className="text-center border border-gray-500">Action</th>
+                    <th className="text-center border border-gray-500 font-bold text-black">Post Title</th>
+                    <th className="text-center border border-gray-500 font-bold text-black">Category</th>
+                    <th className="text-center border border-gray-500 font-bold text-black">Deadline</th>
+                    <th className="text-center border border-gray-500 font-bold text-black">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,7 +62,7 @@ const MyVolunteerRequestPost = () => {
     </>
 
     return (
-        <div>
+        <div className="bg-blue-100 pl-10 pr-10 pb-10">
             <DynamicTitle title="My Volunteer Request" />
             <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center pt-8 mb-8">My Volunteer Request</h1>
             {myRequestPost.length>0?table:noData}

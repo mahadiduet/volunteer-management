@@ -1,9 +1,9 @@
 
 const ExtraSection = () => {
     return (
-        <div>
-            <div className="mb-4">
-                <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center mt-8 mb-8">Latest Events & Programs</h1>
+        <div className="bg-gray-400">
+            <div className="pb-4">
+                <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center pt-8 pb-8">Latest Events & Programs</h1>
                 <div className="grid grid-cols-2 gap-4">
                     <div className="col-span-1">
                         <img className="w-full h-[200px]" src="https://i.ibb.co/MCynYFs/a2.jpg" alt="" />

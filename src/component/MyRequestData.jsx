@@ -20,7 +20,7 @@ const MyRequestData = ({ post, onDelete }) => {
             <td className="border border-gray-500">{category}</td>
             <td className="border border-gray-500">{deadline}</td>
             <td className="flex gap-5 border border-gray-500">
-            <button className="bg-red-600 text-white p-2 rounded-lg" onClick={handleRequestPostDelete}>Cancel</button>
+            <button className="bg-red-600 text-white p-2 rounded-lg text-center mx-auto" onClick={handleRequestPostDelete}>Cancel</button>
             </td>
         </tr>
     );

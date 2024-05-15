@@ -9,18 +9,18 @@ const Home = () => {
     return (
         <div>
             <Slider />
-            <div>
-                <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center mt-8 mb-8">Volunteers Post</h1>
-                <p className="w-3/4 mx-auto text-center mb-5">
+            <div className="bg-slate-200">
+                <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center pt-8 pb-8">Volunteers Post</h1>
+                <p className="w-3/4 mx-auto text-center pb-5">
                     Volunteer service embodies selflessness, community spirit, and empathy. It spans various sectors, from humanitarian aid to environmental conservation, education, and healthcare. Volunteers contribute their time, skills, and resources to address societal needs, fostering positive change and building stronger, more cohesive communities.
                 </p>
             </div>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-5 mb-4">
+            <div className="bg-slate-200 grid lg:grid-cols-3 md:grid-cols-2 gap-5 pb-4">
                 {
                     volunteers.map(volunteer => <VolunteersCard key={volunteer._id} volunteer={volunteer}></VolunteersCard>)
                 }
             </div>
-            <div className="flex justify-center">
+            <div className="bg-slate-200 pb-4 flex justify-center">
                 <Link to={`/volunteersPost`}><button className="btn bg-blue-700 text-white text-xl">See All</button></Link>
             </div>
             <ExtraSection />

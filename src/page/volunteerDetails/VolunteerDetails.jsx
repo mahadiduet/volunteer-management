@@ -12,8 +12,7 @@ const VolunteerDetails = () => {
     const user_name = user?.displayName;
     const { _id, category, deadline, description, location, noOfVolunteersNeeded, postTitle, thumbnail, email, displayName } = volunteer[0];
     const updateNoOfVolunteer = noOfVolunteersNeeded - 1;
-    // console.log(noOfVolunteersNeeded);
-    // console.log(updateNoOfVolunteer);
+
     const handleBeVolunteer = async () => {
         const data = {
             post_id: _id,
@@ -32,23 +31,19 @@ const VolunteerDetails = () => {
                 if (res.data.insertedId) {
                     axios.put(`https://volunteer-management-server-website.vercel.app/be-volunteer/${_id}`, { updateNoOfVolunteer })
                         .then(res => {
-                            // console.log('Updaet:',res.data);
                             toast.success("You are added to Vounteer team!");
-                            // navigate('/myvolunteerpost');
                         })
                         .catch((err) => {
                             console.log(err);
                         })
                 }
-                // toast.success('You volunteer post added successfully');
-                // navigate('/myvolunteerpost');
             })
             .catch((err) => {
                 console.log(err);
             })
     }
     return (
-        <div className="bg-base-200 p-4 rounded-lg">
+        <div className="bg-blue-100 p-4 rounded-lg">
             <DynamicTitle title={postTitle} />
             <div className="flex-col lg:flex-row">
                 <img className="w-full h-[300px] mx-auto mb-6 rounded-md" src={thumbnail} />

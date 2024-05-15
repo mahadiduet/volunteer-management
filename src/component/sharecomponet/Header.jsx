@@ -65,7 +65,7 @@ const Header = () => {
         console.log('Theme Value', value);
     }
     return (
-        <div className="navbar bg-base-100 shadow-lg">
+        <div className="navbar bg-slate-500 shadow-lg">
             <div className="navbar-start">
                 <div className="dropdown">
                     <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -75,7 +75,7 @@ const Header = () => {
                         {menu}
                     </ul>
                 </div>
-                <Link to='/'><img src="/logo.png" className="w-[150px] h-[50px]" alt="" /></Link>
+                <Link to='/'><img src="/logo.png" className="w-[150px] h-[50px] rounded-full" alt="" /></Link>
                 {/* <a className="btn btn-ghost text-xl font-bold">Volunteer Management</a> */}
             </div>
             <div className="navbar-center hidden lg:flex">

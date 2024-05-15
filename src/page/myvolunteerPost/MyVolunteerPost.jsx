@@ -69,7 +69,7 @@ const MyVolunteerPost = () => {
     </>
 
     return (
-        <div className="bg-cyan-100">
+        <div className="bg-blue-100 pb-6 pl-10 pr-10">
             <DynamicTitle title="My Volunteer Post" />
             <h1 className="font-playfair text-5xl font-bold text-[#131313] text-center pt-8 mb-8">My Volunteer Post</h1>
             {myVolunteerPost.length>0?table:noData}
