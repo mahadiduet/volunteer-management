@@ -4,7 +4,7 @@ const VolunteersCard = ({volunteer}) => {
     // console.log(volunteer);
     const {_id, thumbnail, category, deadline, postTitle} = volunteer;
     return (
-        <div className="bg-base-200, min-h-[450px] p-4 rounded-lg shadow-2xl relative">
+        <div className="bg-base-200, min-h-[500px] p-4 rounded-lg shadow-2xl relative">
             <div className="flex-col lg:flex-row">
                 <img className="w-[300px] h-[200px] mx-auto mb-6 rounded-md" src={thumbnail} />
                 <div>
