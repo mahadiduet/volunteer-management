@@ -14,33 +14,39 @@ const VolunteerDetails = () => {
     const updateNoOfVolunteer = noOfVolunteersNeeded - 1;
 
     const handleBeVolunteer = async () => {
-        const data = {
-            post_id: _id,
-            postTitle,
-            organization_name: displayName,
-            organization_email: email,
-            category,
-            deadline,
-            user_name: user_name,
-            user_email: user_email
-        };
-        await axios.post('https://volunteer-management-server-website.vercel.app/be-volunteer', data)
-            .then(res => {
-                console.log('Response API: ', res.data)
-                console.log('Response Insert Id: ', res.data.insertedId);
-                if (res.data.insertedId) {
-                    axios.put(`https://volunteer-management-server-website.vercel.app/be-volunteer/${_id}`, { updateNoOfVolunteer })
-                        .then(res => {
-                            toast.success("You are added to Vounteer team!");
-                        })
-                        .catch((err) => {
-                            console.log(err);
-                        })
-                }
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+        if (noOfVolunteersNeeded > 0) {
+            const data = {
+                post_id: _id,
+                postTitle,
+                organization_name: displayName,
+                organization_email: email,
+                category,
+                deadline,
+                user_name: user_name,
+                user_email: user_email
+            };
+            await axios.post('https://volunteer-management-server-website.vercel.app/be-volunteer', data)
+                .then(res => {
+                    console.log('Response API: ', res.data)
+                    console.log('Response Insert Id: ', res.data.insertedId);
+                    if (res.data.insertedId) {
+                        axios.put(`https://volunteer-management-server-website.vercel.app/be-volunteer/${_id}`, { updateNoOfVolunteer })
+                            .then(res => {
+                                toast.success("You are added to Vounteer team!");
+                            })
+                            .catch((err) => {
+                                console.log(err);
+                            })
+                    }
+                })
+                .catch((err) => {
+                    console.log(err);
+                })
+        }
+        else {
+            toast.warning('Sorry, Already volunteer team full. Your request is no accept.');
+        }
+
     }
     return (
         <div className="bg-blue-100 p-4 rounded-lg">
