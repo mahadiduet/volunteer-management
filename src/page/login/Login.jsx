@@ -15,7 +15,6 @@ const Login = () => {
         const password = e.target.password.value;
         login(email, password)
             .then((res) => {
-                // const user = res.user;
                 toast.success('You are successfully logged in')
                 navigate(existLocation);
             })
